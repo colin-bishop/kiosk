@@ -51,6 +51,14 @@ Chromium launch flags in `start.sh`:
 
 ### Network & IP
 - Assign a static IP (`192.168.50.10`) via DHCP reservation or `/etc/dhcpcd.conf`.
+- Example `/etc/dhcpcd.conf` snippet:
+```
+interface eth0
+static ip_address=192.168.50.10/24
+static routers=192.168.50.1
+static domain_name_servers=192.168.50.1
+```
+- For Wi-Fi, set `BALENA_WIFI_SSID` and `BALENA_WIFI_KEY` in Balena Cloud.
 - Ensure the Pi 400 joins the correct network on boot.
 
 ## Build & Deployment
@@ -116,4 +124,4 @@ Confirm Chromium starts and navigates to the target URL.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
