@@ -1,0 +1,16 @@
+# Balena Chromium kiosk for Raspberry Pi 400
+FROM balenalib/rpi-raspbian:bullseye
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        chromium-browser \
+        matchbox-window-manager \
+        xserver-xorg && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV BROWSER_URL=http://192.168.50.10
+
+COPY start.sh /usr/src/app/start.sh
+RUN chmod +x /usr/src/app/start.sh
+
+CMD ["/usr/src/app/start.sh"]
